@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
 
 
 @Component({
@@ -8,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  username = '';
+  repos$;
+
+  constructor(private service: HttpService) {
+   }
+
 
   ngOnInit() {
+  }
+
+  getRepos() {
+    this.service.getRepos(this.username)
+    .subscribe(data => {
+      this.repos$ = data;
+      console.log(this.repos$);
+    });
+    
   }
 
 }

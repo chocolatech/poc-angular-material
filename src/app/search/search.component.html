@@ -1,5 +1,5 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Find GitHub user" value="username">
+    <input matInput placeholder="GitHub user" name="username" [(ngModel)]="username" (keyup.enter)="getRepos()">
   </mat-form-field>
 </form>
