@@ -9,7 +9,7 @@ import { HttpService } from '../services/http.service';
 })
 export class SearchComponent implements OnInit {
 
-@Output() onDataLoad = new EventEmitter();;
+@Output() onDataLoad = new EventEmitter();
 username;
 
   ngOnInit() {

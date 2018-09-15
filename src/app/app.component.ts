@@ -14,12 +14,11 @@ export class AppComponent {
   constructor(private service: HttpService) {
    }
 
-  loadData(username) {
+  getRepos(username) {
     this.service.getRepos(username)
     .subscribe(data => {
       this.repos$ = data;
       this.username = username;
-      console.log(this.repos$);
     });
     
   }
