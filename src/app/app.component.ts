@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'poc-angular-material';
+
+  username = '';
+  repos$;
+
+  constructor(private service: HttpService) {
+   }
+
+  loadData(username) {
+    this.service.getRepos(username)
+    .subscribe(data => {
+      this.repos$ = data;
+      this.username = username;
+      console.log(this.repos$);
+    });
+    
+  }
 }

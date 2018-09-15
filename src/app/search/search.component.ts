@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { HttpService } from '../services/http.service';
 
 
@@ -9,23 +9,15 @@ import { HttpService } from '../services/http.service';
 })
 export class SearchComponent implements OnInit {
 
-  username = '';
-  repos$;
-
-  constructor(private service: HttpService) {
-   }
-
+@Output() onDataLoad = new EventEmitter();;
+username;
 
   ngOnInit() {
+
   }
 
-  getRepos() {
-    this.service.getRepos(this.username)
-    .subscribe(data => {
-      this.repos$ = data;
-      console.log(this.repos$);
-    });
-    
+  loadData() {
+    this.onDataLoad.emit(this.username);
   }
 
 }
